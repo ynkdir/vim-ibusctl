@@ -1,4 +1,4 @@
-// gcc ibusctrl.c -o ibusctrl.so -shared -fPIC `pkg-config --cflags --libs ibus-1.0 glib-2.0`
+// gcc ibusctl.c -o ibusctl.so -shared -fPIC `pkg-config --cflags --libs ibus-1.0 glib-2.0`
 
 #include <dlfcn.h>
 #include <glib.h>

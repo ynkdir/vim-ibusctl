@@ -3,4 +3,4 @@ if !exists('&imstatusfunc') || !has('gui_running')
 endif
 
 " Initialize after fork and GUI focus gained to get current input context.
-autocmd FocusGained * call ibusctrl#init()
+autocmd FocusGained * call ibusctl#init()
