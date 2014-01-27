@@ -22,8 +22,11 @@ int im_init(const char *selfpath)
 {
     gchar *path;
     GDBusConnection *conn;
+    void *h;
 
-    dlopen(selfpath, RTLD_LAZY);
+    h = dlopen(selfpath, RTLD_LAZY);
+    if (h == NULL)
+        return -1;
 
     ibus_init();
 
@@ -36,6 +39,8 @@ int im_init(const char *selfpath)
         return -1;
 
     conn = ibus_bus_get_connection(bus);
+    if (conn == NULL)
+        return -1;
 
     ic = ibus_input_context_get_input_context(path, conn);
     if (ic == NULL)
