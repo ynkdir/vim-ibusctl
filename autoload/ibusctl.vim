@@ -5,16 +5,13 @@ function ibusctl#init()
   if s:init
     return
   endif
-  try
-    let r = libcallnr(s:libpath, 'im_init', s:libpath)
-  catch
-    let r = -1
-  endtry
-  if r == 0
-    set imstatusfunc=ibusctl#statusfunc
-    set imactivatefunc=ibusctl#activatefunc
-  endif
   let s:init = 1
+  try
+    if libcallnr(s:libpath, 'im_init', s:libpath) == 0
+      set imstatusfunc=ibusctl#statusfunc
+      set imactivatefunc=ibusctl#activatefunc
+    endif
+  endtry
 endfunction
 
 function ibusctl#statusfunc()
